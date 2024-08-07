@@ -684,6 +684,7 @@
 .shop-item .image img{
 	position:relative;
 	width:100%;
+	border-radius: 30px;
 	display:block;
 	-webkit-transition: all 500ms ease;
 	-moz-transition: all 500ms ease;
