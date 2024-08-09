@@ -200,7 +200,8 @@
 
 .main-footer .copyright{
 	position:relative;
-	font-size:var(--font-22);
+	 color: var(--white-color);
+   	 font-size: 23px;
 	font-family:var(--font-family-Jost);
 }
 
