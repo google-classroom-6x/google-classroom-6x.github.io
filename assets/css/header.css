@@ -166,8 +166,8 @@
 	-webkit-transition:all 500ms ease;
 	-ms-transition:all 500ms ease;
 	-o-transition:all 500ms ease;
-	background-color:var(--white-color);
 	box-shadow:0px 0px 10px rgba(0,0,0,0.10);
+	    background-color: #6aa84f;
 }
 
 .main-header .sticky-header .mobile-nav-toggler{
