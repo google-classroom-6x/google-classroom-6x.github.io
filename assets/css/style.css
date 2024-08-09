@@ -678,7 +678,6 @@
 .shop-item .image{
 	position:relative;
 	overflow:hidden;
-	background-color:var(--color-seven);
 }
 
 .shop-item .image img{
