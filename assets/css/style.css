@@ -825,7 +825,6 @@
 	font-family: var(--font-family-Jost);
 	margin-bottom:var(--margin-bottom-5);
 	padding-bottom:var(--padding-bottom-15);
-	border-bottom:1px solid rgba(var(--black-color-rgb), 0.06);
 }
 
 .shop-item h6 a{
