@@ -681,6 +681,14 @@
 }
 
 .shop-item .image img{
+	    margin: 5px;
+    padding: 1px;
+    background-color: #8e7975;
+    border-radius: 20px;
+    border: 5px solid #C0C0C0;
+    height: 190px;
+    width: 190px;
+    box-shadow: 0 0 0 2px #8e7975, 0 0 10px rgba(0, 0, 0, 0.5);
 	position:relative;
 	width:100%;
 	border-radius: 30px;
