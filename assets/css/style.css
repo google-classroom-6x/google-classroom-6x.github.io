@@ -690,7 +690,6 @@
     width: 190px;
     box-shadow: 0 0 0 2px #8e7975, 0 0 10px rgba(0, 0, 0, 0.5);
 	position:relative;
-	width:100%;
 	border-radius: 30px;
 	display:block;
 	-webkit-transition: all 500ms ease;
