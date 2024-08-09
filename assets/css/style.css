@@ -678,6 +678,7 @@
 .shop-item .image{
 	position:relative;
 	overflow:hidden;
+	margin-top:-20px;
 }
 
 .shop-item .image img{
