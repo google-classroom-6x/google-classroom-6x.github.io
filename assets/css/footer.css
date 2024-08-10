@@ -201,6 +201,7 @@
 .main-footer .copyright{
 	position:relative;
 	 color: var(--white-color);
+	padding-bottom: 30px;
    	 font-size: 23px;
 	font-family:var(--font-family-Jost);
 }
