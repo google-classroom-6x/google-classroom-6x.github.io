@@ -112,6 +112,7 @@
 
 .main-header .header-lower .main-menu .navigation{
 	position:relative;
+	    padding-top: 20px;
 }
 
 .main-header .main-menu .navigation > li{
