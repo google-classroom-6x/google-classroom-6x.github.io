@@ -256,6 +256,7 @@
 .main-header .main-menu .navigation > li.current > a{
 	opacity:1;
 	color:var(--main-color);
+	font-size: 20px;
 }
 
 .main-header .main-menu .navigation > li > ul{
