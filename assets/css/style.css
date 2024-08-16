@@ -512,16 +512,15 @@
     flex-direction: column;
   }
 
-  .container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-  }
-
-  .box {
-    margin: 20px;
-  }
+ .align-items-center {
+	 height: 70px;
+ }
+	.shop-item .image{
+		padding-left:90px;
+		margin-top:-70px;
+		
+	}
+	
 }
 
 
