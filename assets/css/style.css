@@ -503,6 +503,27 @@
 	height:25px;
 	background-color:var(--main-color);
 }
+@media screen and (min-width: 480px) {
+  body {
+    background-color: lightgreen;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .box {
+    margin: 20px;
+  }
+}
+
 
 /*** 
 
