@@ -756,7 +756,7 @@ p{
 	position:relative;
 	line-height:32px;
 	font-size:var(--font-16);
-	color:var(--color-two); 
+	color: black; 
 	font-family: var(--font-family-Outfit);
 }
 
