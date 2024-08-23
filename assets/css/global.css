@@ -711,7 +711,7 @@ body {
 a{
 	text-decoration:none;
 	cursor:pointer;
-	color:var(--main-color);
+	color:floralwhite;
 }
 
 .text-right{
