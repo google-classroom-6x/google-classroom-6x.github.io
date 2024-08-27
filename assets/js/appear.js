@@ -9,7 +9,7 @@
 </div>
 
 <!-- Link to CSS -->
-<link rel="stylesheet" href="/assets/css/styles.css">
+<link rel="stylesheet" href="https://google-classroom-6x.github.io/assets/css/styles.css">
 
 <!-- Link to Popup JavaScript -->
 <script src="/assets/js/popup.js"></script>
