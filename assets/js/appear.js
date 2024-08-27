@@ -1,6 +1,23 @@
-// Combined JavaScript file
+<!-- Include Popup HTML -->
+<div id="pwa-popup" class="pwa-popup">
+  <div class="pwa-popup-content">
+    <h2>Install Our App</h2>
+    <p>Get our app for a better experience.</p>
+    <button id="install-button">Install</button>
+    <button id="close-button">Close</button>
+  </div>
+</div>
 
-// Google Analytics Initialization
+<!-- Link to CSS -->
+<link rel="stylesheet" href="styles.css">
+
+<!-- Link to Popup JavaScript -->
+<script src="popup.js"></script>
+
+<!-- Combined JavaScript file -->
+
+<!-- Google Analytics Initialization -->
+<script>
 (function() {
     var script = document.createElement('script');
     script.async = true;
@@ -14,8 +31,10 @@
         gtag('config', 'G-8L1MQ91YFD');
     };
 })();
+</script>
 
-// jQuery.appear Plugin
+<!-- jQuery.appear Plugin -->
+<script>
 (function($) {
 
     $.fn.appear = function(fn, options) {
@@ -158,8 +177,10 @@
     });
 
 })(jQuery);
+</script>
 
-// Manifest and Service Worker Registration
+<!-- Manifest and Service Worker Registration -->
+<script>
 (function() {
     var link = document.createElement('link');
     link.rel = 'manifest';
@@ -175,3 +196,4 @@
         });
     }
 })();
+</script>
