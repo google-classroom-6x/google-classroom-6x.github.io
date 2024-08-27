@@ -12,7 +12,7 @@
 <link rel="stylesheet" href="https://google-classroom-6x.github.io/assets/css/styles.css">
 
 <!-- Link to Popup JavaScript -->
-<script src="/assets/js/popup.js"></script>
+<script src="https://google-classroom-6x.github.io/assets/js/popup.js"></script>
 
 <!-- Combined JavaScript file -->
 
