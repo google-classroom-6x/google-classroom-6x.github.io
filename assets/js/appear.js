@@ -1,4 +1,3 @@
-
 <!-- Combined JavaScript file -->
 
 <!-- Google Analytics Initialization -->
@@ -26,13 +25,8 @@
 
         var settings = $.extend({
 
-            // arbitrary data to pass to fn
             data: undefined,
-
-            // call fn only on the first appear?
             one: true,
-
-            // X & Y accuracy
             accX: 0,
             accY: 0
 
@@ -41,29 +35,22 @@
         return this.each(function() {
 
             var t = $(this);
-
-            // whether the element is currently visible
             t.appeared = false;
 
             if (!fn) {
-                // trigger the custom event
                 t.trigger('appear', settings.data);
                 return;
             }
 
             var w = $(window);
 
-            // fires the appear event when appropriate
             var check = function() {
 
-                // is the element hidden?
                 if (!t.is(':visible')) {
-                    // it became hidden
                     t.appeared = false;
                     return;
                 }
 
-                // is the element inside the visible window?
                 var a = w.scrollLeft();
                 var b = w.scrollTop();
                 var o = t.offset();
@@ -82,64 +69,47 @@
                     x + tw + ax >= a &&
                     x <= a + ww + ax) {
 
-                    // trigger the custom event
                     if (!t.appeared) t.trigger('appear', settings.data);
 
                 } else {
-                    // it scrolled out of view
                     t.appeared = false;
                 }
             };
 
-            // create a modified fn with some additional logic
             var modifiedFn = function() {
 
-                // mark the element as visible
                 t.appeared = true;
 
-                // is this supposed to happen only once?
                 if (settings.one) {
-
-                    // remove the check
                     w.unbind('scroll', check);
                     var i = $.inArray(check, $.fn.appear.checks);
                     if (i >= 0) $.fn.appear.checks.splice(i, 1);
                 }
 
-                // trigger the original fn
                 fn.apply(this, arguments);
             };
 
-            // bind the modified fn to the element
             if (settings.one) t.one('appear', settings.data, modifiedFn);
             else t.bind('appear', settings.data, modifiedFn);
 
-            // check whenever the window scrolls
             w.scroll(check);
-
-            // check whenever the dom changes
             $.fn.appear.checks.push(check);
-
-            // check now
             (check)();
 
         });
 
     };
 
-    // keep a queue of appearance checks
     $.extend($.fn.appear, {
 
         checks: [],
         timeout: null,
 
-        // process the queue
         checkAll: function() {
             var length = $.fn.appear.checks.length;
             if (length > 0) while (length--) ($.fn.appear.checks[length])();
         },
 
-        // check the queue asynchronously
         run: function() {
             if ($.fn.appear.timeout) clearTimeout($.fn.appear.timeout);
             $.fn.appear.timeout = setTimeout($.fn.appear.checkAll, 20);
@@ -147,7 +117,6 @@
 
     });
 
-    // run checks when these methods are called
     $.each(['append', 'prepend', 'after', 'before', 'attr',
         'removeAttr', 'addClass', 'removeClass', 'toggleClass',
         'remove', 'css', 'show', 'hide'], function(i, n) {
@@ -181,4 +150,50 @@
         });
     }
 })();
+</script>
+
+<!-- Popup HTML -->
+<div id="pwa-popup" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); color: white; text-align: center; z-index: 1000; flex-wrap: wrap; flex-direction: row;">
+  <div style="margin: 20% auto; padding: 20px; background: #333; border-radius: 10px; width: 80%; max-width: 600px;">
+    <h2>Install our Google Classroom 6x to Play Unblocked Games</h2>
+    <p style="color: white;">For a better experience, install our app on your device.</p>
+    <button id="install-button" style="padding: 10px 20px; font-size: 16px; cursor: pointer;">Install Classroom 6x</button>
+    <button id="close-popup" style="padding: 10px 20px; font-size: 16px; cursor: pointer; margin-left: 10px;">Close</button>
+  </div>
+</div>
+
+<!-- PWA Installation Popup Script -->
+<script>
+let deferredPrompt;
+const popup = document.getElementById('pwa-popup');
+const installButton = document.getElementById('install-button');
+const closePopupButton = document.getElementById('close-popup');
+
+// Listen for the 'beforeinstallprompt' event
+window.addEventListener('beforeinstallprompt', (e) => {
+  e.preventDefault();
+  deferredPrompt = e;
+  popup.style.display = 'flex';
+});
+
+// Handle the install button click
+installButton.addEventListener('click', () => {
+  if (deferredPrompt) {
+    deferredPrompt.prompt();
+    deferredPrompt.userChoice.then((choiceResult) => {
+      if (choiceResult.outcome === 'accepted') {
+        console.log('User accepted the A2HS prompt');
+      } else {
+        console.log('User dismissed the A2HS prompt');
+      }
+      deferredPrompt = null;
+      popup.style.display = 'none';
+    });
+  }
+});
+
+// Handle the close popup button click
+closePopupButton.addEventListener('click', () => {
+  popup.style.display = 'none';
+});
 </script>
