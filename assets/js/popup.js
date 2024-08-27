@@ -8,7 +8,7 @@ window.addEventListener('beforeinstallprompt', (e) => {
   e.preventDefault();
   // Stash the event so it can be triggered later
   deferredPrompt = e;
-  // Check if the PWA is already installed
+  // Show the popup if the PWA is not already installed
   if (!window.matchMedia('(display-mode: standalone)').matches) {
     pwaPopup.style.display = 'flex'; // Show the popup
   }
@@ -33,15 +33,9 @@ closeButton.addEventListener('click', () => {
   pwaPopup.style.display = 'none'; // Hide the popup
 });
 
-// Hide the popup if the app is already installed
-if (window.matchMedia('(display-mode: standalone)').matches) {
-  pwaPopup.style.display = 'none';
-}
-
-// Show the popup when the DOM content is fully loaded
-document.addEventListener('DOMContentLoaded', (event) => {
-  // Check if the PWA is not installed and the prompt was deferred
-  if (!window.matchMedia('(display-mode: standalone)').matches && deferredPrompt) {
+document.addEventListener('DOMContentLoaded', () => {
+  // Ensure the popup is shown if the PWA is not installed and the prompt was deferred
+  if (deferredPrompt && !window.matchMedia('(display-mode: standalone)').matches) {
     pwaPopup.style.display = 'flex'; // Show the popup
   }
 });
