@@ -9,10 +9,10 @@
 </div>
 
 <!-- Link to CSS -->
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="/assets/css/styles.css">
 
 <!-- Link to Popup JavaScript -->
-<script src="popup.js"></script>
+<script src="/assets/js/popup.js"></script>
 
 <!-- Combined JavaScript file -->
 
