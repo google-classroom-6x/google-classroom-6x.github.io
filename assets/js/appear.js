@@ -1,18 +1,3 @@
-<!-- Include Popup HTML -->
-<div id="pwa-popup" class="pwa-popup">
-  <div class="pwa-popup-content">
-    <h2>Install Our App</h2>
-    <p>Get our app for a better experience.</p>
-    <button id="install-button">Install</button>
-    <button id="close-button">Close</button>
-  </div>
-</div>
-
-<!-- Link to CSS -->
-<link rel="stylesheet" href="https://google-classroom-6x.github.io/assets/css/styles.css">
-
-<!-- Link to Popup JavaScript -->
-<script> src="https://google-classroom-6x.github.io/assets/js/popup.js"</script>
 
 <!-- Combined JavaScript file -->
 
