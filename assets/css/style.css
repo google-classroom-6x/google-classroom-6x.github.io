@@ -10156,34 +10156,3 @@
 	margin-top:var(--margin-top-5);
 }
 
-
-
-/ CSS for the popup /
-#pwa-popup {
-  display: none; / Hidden by default /
-  position: fixed; / Sit on top of the page /
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.7); / Black background with opacity /
-  color: white;
-  text-align: center;
-  z-index: 1000; / High z-index to overlay on top of other elements /
-}
-
-#pwa-popup > div {
-  margin: 20% auto;
-  padding: 20px;
-  background: #333;
-  border-radius: 10px;
-  width: 80%;
-  max-width: 600px;
-}
-
-#install-button, #close-popup {
-  padding: 10px 20px;
-  font-size: 16px;
-  cursor: pointer;
-  margin: 10px;
-}
