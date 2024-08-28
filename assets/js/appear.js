@@ -2,7 +2,7 @@
 <div id="pwa-popup" class="pwa-popup">
   <div class="pwa-popup-content">
     <h2>Install Our App</h2>
-    <p>Get our app for a better experience.</p>
+    <p>Get our site for a better experience.</p>
     <button id="install-button">Install</button>
     <button id="close-button">Close</button>
   </div>
