@@ -1,6 +1,23 @@
+<!-- Include Popup HTML -->
+<div id="pwa-popup" class="pwa-popup">
+  <div class="pwa-popup-content">
+    <h2>Install Our App</h2>
+    <p>Get our app for a better experience.</p>
+    <button id="install-button">Install</button>
+    <button id="close-button">Close</button>
+  </div>
+</div>
+
+<!-- Link to CSS -->
+<link rel="stylesheet" href="https://google-classroom-6x.github.io/assets/css/styles.css">
+
+<!-- Link to Popup JavaScript -->
+<script src="https://google-classroom-6x.github.io/assets/js/popup.js"></script>
+
 <!-- Combined JavaScript file -->
 
 <!-- Google Analytics Initialization -->
+<script>
 (function() {
     var script = document.createElement('script');
     script.async = true;
@@ -14,8 +31,10 @@
         gtag('config', 'G-8L1MQ91YFD');
     };
 })();
+</script>
 
 <!-- jQuery.appear Plugin -->
+<script>
 (function($) {
 
     $.fn.appear = function(fn, options) {
@@ -158,8 +177,10 @@
     });
 
 })(jQuery);
+</script>
 
 <!-- Manifest and Service Worker Registration -->
+<script>
 (function() {
     var link = document.createElement('link');
     link.rel = 'manifest';
@@ -175,27 +196,4 @@
         });
     }
 })();
-
-<!-- PWA Install Prompt Handling -->
-let deferredPrompt;
-window.addEventListener('beforeinstallprompt', (e) => {
-    e.preventDefault();
-    deferredPrompt = e;
-
-    const installButton = document.getElementById('installButton');
-    if (installButton) {
-        installButton.style.display = 'block';
-        installButton.addEventListener('click', (e) => {
-            installButton.style.display = 'none';
-            deferredPrompt.prompt();
-            deferredPrompt.userChoice.then((choiceResult) => {
-                if (choiceResult.outcome === 'accepted') {
-                    console.log('User accepted the install prompt');
-                } else {
-                    console.log('User dismissed the install prompt');
-                }
-                deferredPrompt = null;
-            });
-        });
-    }
-});
+</script>
