@@ -202,6 +202,14 @@
     // Append the popup to the body
     document.body.appendChild(pwaPopup);
 
+    window.onload = function() {
+    // JavaScript to manage PWA installation popup
+
+    let deferredPrompt;
+    const popup = document.getElementById('pwa-popup');
+    const installButton = document.getElementById('install-button');
+    const closePopupButton = document.getElementById('close-popup');
+
     // Listen for the 'beforeinstallprompt' event
     window.addEventListener('beforeinstallprompt', (e) => {
         e.preventDefault(); // Prevent the default prompt
