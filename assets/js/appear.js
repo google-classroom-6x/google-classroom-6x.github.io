@@ -1,7 +1,6 @@
-<!-- Combined JavaScript file -->
+// Combined JavaScript file
 
-<!-- Google Analytics Initialization -->
-<script>
+// Google Analytics Initialization
 (function() {
     var script = document.createElement('script');
     script.async = true;
@@ -15,60 +14,42 @@
         gtag('config', 'G-8L1MQ91YFD');
     };
 })();
-</script>
 
-<!-- jQuery.appear Plugin -->
-<script>
+// jQuery.appear Plugin
 (function($) {
 
     $.fn.appear = function(fn, options) {
 
         var settings = $.extend({
-
-            // arbitrary data to pass to fn
             data: undefined,
-
-            // call fn only on the first appear?
             one: true,
-
-            // X & Y accuracy
             accX: 0,
             accY: 0
-
         }, options);
 
         return this.each(function() {
 
             var t = $(this);
-
-            // whether the element is currently visible
             t.appeared = false;
 
             if (!fn) {
-                // trigger the custom event
                 t.trigger('appear', settings.data);
                 return;
             }
 
             var w = $(window);
-
-            // fires the appear event when appropriate
             var check = function() {
 
-                // is the element hidden?
                 if (!t.is(':visible')) {
-                    // it became hidden
                     t.appeared = false;
                     return;
                 }
 
-                // is the element inside the visible window?
                 var a = w.scrollLeft();
                 var b = w.scrollTop();
                 var o = t.offset();
                 var x = o.left;
                 var y = o.top;
-
                 var ax = settings.accX;
                 var ay = settings.accY;
                 var th = t.height();
@@ -81,72 +62,46 @@
                     x + tw + ax >= a &&
                     x <= a + ww + ax) {
 
-                    // trigger the custom event
                     if (!t.appeared) t.trigger('appear', settings.data);
 
                 } else {
-                    // it scrolled out of view
                     t.appeared = false;
                 }
             };
 
-            // create a modified fn with some additional logic
             var modifiedFn = function() {
-
-                // mark the element as visible
                 t.appeared = true;
-
-                // is this supposed to happen only once?
                 if (settings.one) {
-
-                    // remove the check
                     w.unbind('scroll', check);
                     var i = $.inArray(check, $.fn.appear.checks);
                     if (i >= 0) $.fn.appear.checks.splice(i, 1);
                 }
-
-                // trigger the original fn
                 fn.apply(this, arguments);
             };
 
-            // bind the modified fn to the element
             if (settings.one) t.one('appear', settings.data, modifiedFn);
             else t.bind('appear', settings.data, modifiedFn);
 
-            // check whenever the window scrolls
             w.scroll(check);
-
-            // check whenever the dom changes
             $.fn.appear.checks.push(check);
-
-            // check now
             (check)();
-
         });
 
     };
 
-    // keep a queue of appearance checks
     $.extend($.fn.appear, {
-
         checks: [],
         timeout: null,
-
-        // process the queue
         checkAll: function() {
             var length = $.fn.appear.checks.length;
             if (length > 0) while (length--) ($.fn.appear.checks[length])();
         },
-
-        // check the queue asynchronously
         run: function() {
             if ($.fn.appear.timeout) clearTimeout($.fn.appear.timeout);
             $.fn.appear.timeout = setTimeout($.fn.appear.checkAll, 20);
         }
-
     });
 
-    // run checks when these methods are called
     $.each(['append', 'prepend', 'after', 'before', 'attr',
         'removeAttr', 'addClass', 'removeClass', 'toggleClass',
         'remove', 'css', 'show', 'hide'], function(i, n) {
@@ -161,3 +116,124 @@
     });
 
 })(jQuery);
+
+// PWA Popup Code
+(function() {
+    let deferredPrompt;
+    const popup = document.getElementById('pwa-popup');
+    const installButton = document.getElementById('install-button');
+    const closePopupButton = document.getElementById('close-popup');
+
+    // Create the main popup container
+    const pwaPopup = document.createElement('div');
+    pwaPopup.id = 'pwa-popup';
+    pwaPopup.style.display = 'none';
+    pwaPopup.style.position = 'fixed';
+    pwaPopup.style.top = '0';
+    pwaPopup.style.left = '0';
+    pwaPopup.style.width = '100%';
+    pwaPopup.style.height = '100%';
+    pwaPopup.style.background = 'rgba(255,255,255,0.8)';
+    pwaPopup.style.color = '#333';
+    pwaPopup.style.textAlign = 'center';
+    pwaPopup.style.zIndex = '1000';
+    pwaPopup.style.display = 'flex';
+    pwaPopup.style.alignItems = 'center';
+    pwaPopup.style.justifyContent = 'center';
+
+    // Create the inner content container
+    const innerDiv = document.createElement('div');
+    innerDiv.style.padding = '25px';
+    innerDiv.style.background = '#f5f5f5';
+    innerDiv.style.borderRadius = '20px';
+    innerDiv.style.width = '90%';
+    innerDiv.style.maxWidth = '450px';
+    innerDiv.style.boxShadow = '0 4px 15px rgba(0, 0, 0, 0.2)';
+    innerDiv.style.textAlign = 'center';
+
+    // Create the heading
+    const heading = document.createElement('h2');
+    heading.style.fontSize = '22px';
+    heading.style.marginBottom = '15px';
+    heading.style.color = '#2c3e50';
+    heading.textContent = "Hey there! 👋";
+
+    // Create the paragraph
+    const paragraph = document.createElement('p');
+    paragraph.style.fontSize = '16px';
+    paragraph.style.color = '#444';
+    paragraph.style.marginBottom = '25px';
+    paragraph.textContent = "Add to Home Screen for Quick Access to Unblocked Games!";
+
+    // Create the install button
+    const installButton = document.createElement('button');
+    installButton.id = 'install-button';
+    installButton.style.padding = '12px 28px';
+    installButton.style.fontSize = '18px';
+    installButton.style.cursor = 'pointer';
+    installButton.style.backgroundColor = '#ff7f50';
+    installButton.style.color = 'white';
+    installButton.style.border = 'none';
+    installButton.style.borderRadius = '25px';
+    installButton.style.marginRight = '10px';
+    installButton.style.transition = 'background-color 0.3s';
+    installButton.innerHTML = '<i class="fas fa-heart" style="margin-right: 8px;"></i>Add to Home Screen';
+
+    // Create the close button
+    const closeButton = document.createElement('button');
+    closeButton.id = 'close-popup';
+    closeButton.style.padding = '12px 28px';
+    closeButton.style.fontSize = '18px';
+    closeButton.style.cursor = 'pointer';
+    closeButton.style.backgroundColor = 'transparent';
+    closeButton.style.color = '#888';
+    closeButton.style.border = 'none';
+    closeButton.style.borderRadius = '25px';
+    closeButton.style.transition = 'color 0.3s';
+    closeButton.textContent = "Not Now";
+
+    // Append all elements to their respective parents
+    innerDiv.appendChild(heading);
+    innerDiv.appendChild(paragraph);
+    innerDiv.appendChild(installButton);
+    innerDiv.appendChild(closeButton);
+    pwaPopup.appendChild(innerDiv);
+
+    // Append the popup to the body
+    document.body.appendChild(pwaPopup);
+
+    // Listen for the 'beforeinstallprompt' event
+    window.addEventListener('beforeinstallprompt', (e) => {
+        e.preventDefault(); // Prevent the default prompt
+        deferredPrompt = e;
+        popup.style.display = 'flex'; // Show the popup
+    });
+
+    // Handle the install button click
+    installButton.addEventListener('click', () => {
+        if (deferredPrompt) {
+            deferredPrompt.prompt(); // Show the install prompt
+            deferredPrompt.userChoice.then((choiceResult) => {
+                if (choiceResult.outcome === 'accepted') {
+                    console.log('User accepted the A2HS prompt');
+                } else {
+                    console.log('User dismissed the A2HS prompt');
+                }
+                deferredPrompt = null;
+                popup.style.display = 'none'; // Hide the popup
+            });
+        }
+    });
+
+    // Handle the close popup button click
+    closePopupButton.addEventListener('click', () => {
+        popup.style.display = 'none'; // Hide the popup
+    });
+
+    // Optionally, you might want to check if the PWA is already installed
+    // You can check for the existence of the installed app using navigator.standalone
+    // if (window.navigator.standalone) {
+    //   popup.style.display = 'none'; // Hide the popup if app is installed
+    // }
+
+})();
