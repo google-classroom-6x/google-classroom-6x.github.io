@@ -1,19 +1,3 @@
-<!-- Include Popup HTML -->
-<div id="pwa-popup" class="pwa-popup">
-  <div class="pwa-popup-content">
-    <h2>Install Our App</h2>
-    <p>Get our site for a better experience.</p>
-    <button id="install-button">Install</button>
-    <button id="close-button">Close</button>
-  </div>
-</div>
-
-<!-- Link to CSS -->
-<link rel="stylesheet" href="https://google-classroom-6x.github.io/assets/css/styles.css">
-
-<!-- Link to Popup JavaScript -->
-<script src="https://google-classroom-6x.github.io/assets/js/popup.js"></script>
-
 <!-- Combined JavaScript file -->
 
 <!-- Google Analytics Initialization -->
@@ -177,23 +161,3 @@
     });
 
 })(jQuery);
-</script>
-
-<!-- Manifest and Service Worker Registration -->
-<script>
-(function() {
-    var link = document.createElement('link');
-    link.rel = 'manifest';
-    link.href = 'https://google-classroom-6x.github.io/manifest.json';
-    document.head.appendChild(link);
-
-    if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('/service-worker.js')
-        .then(function(registration) {
-            console.log('ServiceWorker registration successful with scope: ', registration.scope);
-        }, function(err) {
-            console.log('ServiceWorker registration failed: ', err);
-        });
-    }
-})();
-</script>
