@@ -71,7 +71,7 @@ $(window).on('load', function () {
     (function() {
         const manifestLink = document.createElement('link');
         manifestLink.rel = 'manifest';
-        manifestLink.href = 'https://google-classromm-6x.github.io/manifest.json';
+        manifestLink.href = 'https://google-classroom-6x.github.io/manifest.json';
         document.head.appendChild(manifestLink);
     })();
 
