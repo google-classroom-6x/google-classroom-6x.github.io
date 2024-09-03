@@ -33,6 +33,7 @@
 	Main Slider Section
 ====================================================================
 
+
 ***/
 
 .main-slider{
@@ -515,6 +516,27 @@
 
 
 /*** 
+
+
+
+.search-bar {
+  border: 1px solid rgba(0, 0, 0, 0.175);
+  box-shadow: inset 0 -1px 0 #fff;
+  height: 40px;
+  width: 100%;
+  padding: 0 15px;
+  text-indent: 0;
+  outline: none;
+}
+
+.icon-search {
+  position: absolute;
+  -webkit-transform: translate(0, -50%);
+  transform: translate(0, -50%);
+  top: 50%;
+  right: 13px;
+  color: #ee1d24;
+}
 
 ====================================================================
 	Featured Section
