@@ -189,7 +189,6 @@
 
 .main-header.fixed-header .sticky-header{
 	z-index:999;
-	height: 76px;
 	opacity:1;
 	visibility:visible;
 	-ms-animation-name: fadeInDown;
