@@ -776,6 +776,7 @@ h2{
 h3{
 	line-height:1.3em;
 	font-size:var(--font-30);
+	text-align: center;
 }
 
 h4{
